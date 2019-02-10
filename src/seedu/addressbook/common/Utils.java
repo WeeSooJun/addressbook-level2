@@ -37,4 +37,18 @@ public class Utils {
         }
         return true;
     }
+
+    /**
+     * Converts each keyword in a set to lowercase
+     *
+     * @param keywords to generate a the set containing the lowercase of these keywords
+     * @return a set of strings all in lower case
+     */
+    public static Set<String> toLowerCase(Set<String> keywords) {
+        final Set<String> result = new HashSet<>();
+        for (String string : keywords) {
+            result.add(string.toLowerCase());
+        }
+        return result;
+    }
 }

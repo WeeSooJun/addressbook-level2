@@ -7,6 +7,7 @@ import java.util.List;
 import java.util.Set;
 
 import seedu.addressbook.data.person.ReadOnlyPerson;
+import seedu.addressbook.common.Utils;
 
 /**
  * Finds and lists all persons in address book whose name contains any of the argument keywords.
@@ -49,8 +50,8 @@ public class FindCommand extends Command {
     private List<ReadOnlyPerson> getPersonsWithNameContainingAnyKeyword(Set<String> keywords) {
         final List<ReadOnlyPerson> matchedPersons = new ArrayList<>();
         for (ReadOnlyPerson person : addressBook.getAllPersons()) {
-            final Set<String> wordsInName = new HashSet<>(person.getName().getWordsInName());
-            if (!Collections.disjoint(wordsInName, keywords)) {
+            final Set<String> wordsInName = Utils.toLowerCase(new HashSet<>(person.getName().getWordsInName()));
+            if (!Collections.disjoint(wordsInName, Utils.toLowerCase(keywords))) {
                 matchedPersons.add(person);
             }
         }
